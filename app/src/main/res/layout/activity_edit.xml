@@ -12,13 +12,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginTop="21dp"
         android:gravity="center"
         android:text="@string/create_title"
         android:textColor="@color/primary_color"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/save" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/title"
@@ -26,14 +28,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginTop="26dp"
         android:hint="@string/name_hint"
         app:boxStrokeColor="@color/color_highlight"
         app:endIconTint="@color/color_highlight"
         app:hintTextColor="@color/color_highlight"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.781"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/formTitle"
-        tools:layout_editor_absoluteY="16dp">
+        app:layout_constraintTop_toBottomOf="@+id/formTitle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleInput"
@@ -46,17 +49,17 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/date"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="182dp"
+        android:layout_height="58dp"
         android:layout_margin="16dp"
-        android:layout_marginTop="81dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="17dp"
         android:hint="@string/date_hint"
         app:boxStrokeColor="@color/color_highlight"
         app:endIconDrawable="@drawable/ic_calendar"
         app:endIconMode="custom"
         app:endIconTint="@color/color_highlight"
         app:hintTextColor="@color/color_highlight"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
 
@@ -75,18 +78,19 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/time"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="173dp"
+        android:layout_height="58dp"
         android:layout_margin="16dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="222dp"
         android:hint="@string/time_hint"
+        app:boxStrokeColor="@color/color_highlight"
         app:endIconDrawable="@drawable/timing"
         app:endIconMode="custom"
-        app:boxStrokeColor="@color/color_highlight"
         app:endIconTint="@color/color_highlight"
         app:hintTextColor="@color/color_highlight"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date">
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/timeInput"
@@ -106,13 +110,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginTop="48dp"
+        android:hint="@string/content_hint"
         app:boxStrokeColor="@color/color_highlight"
         app:endIconTint="@color/color_highlight"
         app:hintTextColor="@color/color_highlight"
-        android:hint="@string/content_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time">
+        app:layout_constraintTop_toBottomOf="@+id/date">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/contentInput"
@@ -128,11 +133,10 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="65dp"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/add_note"
         android:insetTop="0dp"
         android:insetRight="0dp"
@@ -143,7 +147,6 @@
         app:backgroundTint="@color/secondary_color"
         app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
