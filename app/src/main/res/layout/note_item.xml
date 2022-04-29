@@ -72,18 +72,6 @@
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary" />
 
-                    <TextView
-                        android:id="@+id/bookmark"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:drawableLeft="@drawable/ic_baseline_bookmark_24"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:textColor="@color/color_highlight"
-                        app:drawableTint="@color/secondary_color" />
-
                 </LinearLayout>
 
                 <TextView

@@ -51,21 +51,22 @@ class DbManager(context: Context) {
     val readAll: ArrayList<Task>
         @SuppressLint("Range", "SimpleDateFormat")
         get() {
-            val tasks: ArrayList<Task> = ArrayList()
+            val notes: ArrayList<Task> = ArrayList()
             val cursor = database!!.query(Constraint.TABLE_NAME, null, null, null, null, null, null)
             while (cursor.moveToNext()) {
                 val id = cursor.getInt(cursor.getColumnIndex(Constraint.ID))
                 val name = cursor.getString(cursor.getColumnIndex(Constraint.NAME))
-                val date = DateUtils.toDate(
+                val date =
+                    DateUtils.toDate(
                         cursor.getString(cursor.getColumnIndex(Constraint.DATE)),
                         DateUtils.DATE_WITH_TIME
                     )
-                val desc = cursor.getString(cursor.getColumnIndex(Constraint.CONTENT))
+                val content = cursor.getString(cursor.getColumnIndex(Constraint.CONTENT))
                 val done = cursor.getString(cursor.getColumnIndex(Constraint.DONE)) == "true"
-                tasks.add(Task(id, name, date, desc, done))
+                notes.add(Task(id, name, date, content, done))
             }
             cursor.close()
-            return tasks
+            return notes
         }
 
     fun closeDb() {
