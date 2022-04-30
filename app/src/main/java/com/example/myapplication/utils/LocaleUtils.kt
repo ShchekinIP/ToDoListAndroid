@@ -18,10 +18,6 @@ object LocaleUtils {
         return config
     }
 
-    fun attachBaseContext(context: Context): Context? {
-        return updateResources(context)
-    }
-
     @TargetApi(Build.VERSION_CODES.N)
     private fun updateResources(context: Context): Context? {
         val resources: Resources = context.resources
@@ -30,5 +26,9 @@ object LocaleUtils {
         configuration.setLocale(locale)
         configuration.setLocales(LocaleList(locale))
         return context.createConfigurationContext(configuration)
+    }
+
+    fun attachBaseContext(context: Context): Context? {
+        return updateResources(context)
     }
 }
