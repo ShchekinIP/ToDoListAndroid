@@ -47,7 +47,7 @@
                 android:insetBottom="0dp"
                 app:backgroundTint="@color/secondary_color"
                 app:cornerRadius="50dp"
-                app:icon="@drawable/ic_add"
+                app:icon="@drawable/ic_baseline_add_task_24"
                 app:iconGravity="textTop"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/noteRcView"

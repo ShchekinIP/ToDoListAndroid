@@ -18,7 +18,7 @@
     <string name="password_hint">Ввести Пароль</string>
     <string name="repeat_password_hint">Повтор пароля</string>
     <string name="background">background</string>
-    <string name="login_form_button">Регистрация</string>
+    <string name="login_form_button">Вход</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="add_note">add_note</string>
     <string name="top_app_bar_title">Задачи</string>

@@ -16,6 +16,40 @@ import java.util.*
 
 class SettingsFragment : Fragment() {
 
+    private lateinit var binding: FragmentSettingsBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentSettingsBinding.inflate(layoutInflater)
+        binding.apply {
+            val currentLocale = ConfigurationCompat.getLocales(resources.configuration)[0].language
+
+            enButton.setOnClickListener {
+                if (currentLocale != "en") {
+                    LocaleUtils.updateLanguage(requireContext(), Locale.ENGLISH)
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                    activity?.finish()
+                }
+            }
+
+            ruButton.setOnClickListener {
+                if (currentLocale != "ru") {
+                    LocaleUtils.updateLanguage(requireContext(), Locale("ru"))
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                    activity?.finish()
+                }
+            }
+
+            logout.setOnClickListener {
+                startActivity(Intent(requireContext(), LoginActivity::class.java))
+                activity?.finish()
+            }
+        }
+        return binding.root
+    }
+
     companion object {
         @JvmStatic
         fun newInstance() = SettingsFragment()
