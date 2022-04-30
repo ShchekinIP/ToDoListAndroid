@@ -42,6 +42,7 @@
             android:id="@+id/titleInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textCursorDrawable="@color/color_highlight"
             android:maxLines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -123,6 +124,7 @@
             android:id="@+id/contentInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textCursorDrawable="@color/color_highlight"
             android:gravity="start"
             android:inputType="textMultiLine"
             android:maxLines="10"
@@ -133,9 +135,9 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="111dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="146dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/add_note"
         android:insetTop="0dp"

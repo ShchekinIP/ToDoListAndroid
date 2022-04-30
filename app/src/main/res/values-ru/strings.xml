@@ -11,7 +11,7 @@
     <string name="profile_fragment">Profile fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="welcome">Привет</string>
-    <string name="Login_form_subtitle">Планируй день</string>
+    <string name="Login_form_subtitle">Распланируй день</string>
     <string name="login_form">Войти</string>
     <string name="register_button">Регистрация</string>
     <string name="login_hint">Ввести Логин</string>
@@ -20,7 +20,6 @@
     <string name="background">background</string>
     <string name="login_form_button">Регистрация</string>
     <!-- TODO: Remove or change this placeholder text -->
-
     <string name="add_note">add_note</string>
     <string name="top_app_bar_title">Задачи</string>
     <string name="top_app_bar_settings_title">Настройки</string>
@@ -29,17 +28,7 @@
     <string name="delete_card">Delete_card</string>
     <string name="logout">Выйти</string>
     <string name="localization">Локализация</string>
-
-    <string name="drawer_menu_title_time">Показать за Период</string>
-    <string name="drawer_menu_title_category">Показать по Категории</string>
-    <string name="overdue">Просроченные</string>
-    <string name="today">Следующие 24 часа</string>
-    <string name="tomorrow">Грядущие дни</string>
-    <string name="week">Неделя</string>
-    <string name="month">Месяц</string>
-    <string name="future">В будущем</string>
-    <string name="map_view">Map</string>
-
+    <string name="map_view">Карты</string>
     <string name="create_title">Создать задачу</string>
     <string name="edit_title">Изменить задачу</string>
     <string name="name_hint">Заголовок</string>
@@ -47,12 +36,9 @@
     <string name="date_hint">Дата</string>
     <string name="time_hint">Время</string>
     <string name="content_hint">Описание</string>
-
     <string name="save_button">Сохранить</string>
-
     <string name="russian">Русский</string>
     <string name="english">Английский</string>
-
-    <string name="required">Обязательное поле</string>
-    <string name="password_error">Пароли не совпадают</string>
+    <string name="required">Заполните поле</string>
+    <string name="password_error">Пароли не идентичны</string>
 </resources>

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ToDoList</string>
-    <string name="notes">Tasks</string>
+    <string name="notes">Task List</string>
     <string name="map">Map</string>
     <string name="settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -20,37 +20,24 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Login_form_subtitle">Create your day</string>
     <string name="add_note">add_note</string>
-    <string name="top_app_bar_title">Tasks</string>
+    <string name="top_app_bar_title">Task List</string>
     <string name="top_app_bar_settings_title">Settings</string>
     <string name="important_card">Important_card</string>
     <string name="edit_card">Edit_card</string>
     <string name="delete_card">Delete_card</string>
     <string name="logout">Logout</string>
     <string name="localization">Set locale</string>
-
-    <string name="drawer_menu_title_time">Show by Period</string>
-    <string name="drawer_menu_title_category">Show by Category</string>
-    <string name="overdue">Overdue</string>
-    <string name="today">Next 24 Hours</string>
-    <string name="tomorrow">Coming days</string>
-    <string name="week">Week</string>
-    <string name="month">Month</string>
-    <string name="future">Future</string>
     <string name="map_view">Map</string>
-
     <string name="create_title">Add Task</string>
     <string name="edit_title">Edit task</string>
-    <string name="name_hint">Name</string>
+    <string name="name_hint">Title</string>
     <string name="category_hint">Category</string>
     <string name="date_hint">Date</string>
     <string name="time_hint">Time</string>
     <string name="content_hint">Description</string>
-
     <string name="save_button">Save</string>
-
     <string name="russian">Russian</string>
     <string name="english">English</string>
-
     <string name="required">Required</string>
     <string name="password_error">Passwords are not equals</string>
 </resources>

@@ -18,28 +18,30 @@
             android:contentDescription="@string/map"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/clearLineButton"
             style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="25dp"
+            android:layout_width="39dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="565dp"
             android:contentDescription="@string/add_note"
             android:insetTop="0dp"
             android:insetRight="0dp"
             android:insetBottom="0dp"
-            android:visibility="gone"
-            app:backgroundTint="@color/color_highlight"
+            android:visibility="visible"
+            app:backgroundTint="@color/not_active"
             app:cornerRadius="50dp"
             app:icon="@drawable/ic_baseline_clear_24"
             app:iconGravity="textTop"
             app:iconPadding="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

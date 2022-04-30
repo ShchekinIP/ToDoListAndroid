@@ -49,6 +49,7 @@
             android:textColorHighlight="@color/color_highlight"
             android:textColorHint="@color/input_color"
             android:textColorLink="@color/color_highlight"
+            android:textCursorDrawable="@color/color_highlight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +72,7 @@
             android:textColorHighlight="@color/color_highlight"
             android:textColorHint="@color/input_color"
             android:textColorLink="@color/color_highlight"
+            android:textCursorDrawable="@color/color_highlight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login" />
