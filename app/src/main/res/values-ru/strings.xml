@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Список дел</string>
-    <string name="notes">Задачи</string>
+    <string name="notes">Список задач</string>
     <string name="map">Карты</string>
     <string name="settings">Настройки</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -21,7 +21,7 @@
     <string name="login_form_button">Вход</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="add_note">add_note</string>
-    <string name="top_app_bar_title">Задачи</string>
+    <string name="top_app_bar_title">Список задач</string>
     <string name="top_app_bar_settings_title">Настройки</string>
     <string name="important_card">Important_card</string>
     <string name="edit_card">Edit_card</string>

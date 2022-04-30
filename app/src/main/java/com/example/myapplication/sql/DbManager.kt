@@ -5,7 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import com.example.myapplication.model.Task
-import com.example.myapplication.utils.DateUtils
+import com.example.myapplication.adapter.DateTimeAdapter
 
 class DbManager(context: Context) {
     private val dbHelp: DbHelp = DbHelp(context)
@@ -28,7 +28,7 @@ class DbManager(context: Context) {
         val cv = ContentValues()
         cv.put(Constraint.NAME, task.name)
         cv.put(Constraint.CONTENT, task.desc)
-        cv.put(Constraint.DATE, DateUtils.toString(task.date, DateUtils.DATE_WITH_TIME))
+        cv.put(Constraint.DATE, DateTimeAdapter.toString(task.date, DateTimeAdapter.DATE_TIME))
         cv.put(Constraint.DONE, task.done.toString())
         database!!.update(Constraint.TABLE_NAME, cv, "id = ?", Array(1) { task.id.toString() })
     }
@@ -57,9 +57,9 @@ class DbManager(context: Context) {
                 val id = cursor.getInt(cursor.getColumnIndex(Constraint.ID))
                 val name = cursor.getString(cursor.getColumnIndex(Constraint.NAME))
                 val date =
-                    DateUtils.toDate(
+                    DateTimeAdapter.toDate(
                         cursor.getString(cursor.getColumnIndex(Constraint.DATE)),
-                        DateUtils.DATE_WITH_TIME
+                        DateTimeAdapter.DATE_TIME
                     )
                 val content = cursor.getString(cursor.getColumnIndex(Constraint.CONTENT))
                 val done = cursor.getString(cursor.getColumnIndex(Constraint.DONE)) == "true"

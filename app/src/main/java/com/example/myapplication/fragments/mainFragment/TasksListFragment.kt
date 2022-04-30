@@ -9,7 +9,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +20,7 @@ import com.example.myapplication.enums.OperationType
 import com.example.myapplication.interfaces.TaskClickListener
 import com.example.myapplication.model.Task
 import com.example.myapplication.sql.DbManager
-import com.example.myapplication.utils.DateUtils
+import com.example.myapplication.adapter.DateTimeAdapter
 
 class TasksListFragment : Fragment(), TaskClickListener {
     private lateinit var binding: FragmentNotesListBinding
@@ -81,7 +80,7 @@ class TasksListFragment : Fragment(), TaskClickListener {
                 if (type == OperationType.ADD) {
                     task.id = dbManager.insert(
                         task.name,
-                        DateUtils.toString(task.date, DateUtils.DATE_WITH_TIME),
+                        DateTimeAdapter.toString(task.date, DateTimeAdapter.DATE_TIME),
                         task.desc,
                         task.done.toString()
                     ).toInt()

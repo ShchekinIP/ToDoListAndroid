@@ -1,11 +1,11 @@
-package com.example.myapplication.utils
+package com.example.myapplication.adapter
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 
-object DateUtils {
-    const val DATE_WITH_TIME = "dd/MM/yyyy HH:mm"
+object DateTimeAdapter {
+    const val DATE_TIME = "dd/MM/yyyy HH:mm"
     const val DATE = "dd/MM/yyyy"
     const val TIME = "HH:mm"
 
@@ -21,6 +21,6 @@ object DateUtils {
 
     @SuppressLint("SimpleDateFormat")
     fun concatDateAndTime(date: String, time: String): Date {
-        return toDate("$date $time", DATE_WITH_TIME)
+        return toDate("$date $time", DATE_TIME)
     }
 }

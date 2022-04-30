@@ -10,7 +10,7 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityEditBinding
 import com.example.myapplication.enums.OperationType
 import com.example.myapplication.model.Task
-import com.example.myapplication.utils.DateUtils
+import com.example.myapplication.adapter.DateTimeAdapter
 import com.example.myapplication.utils.LocaleUtils
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -47,7 +47,7 @@ class EditActivity : AppCompatActivity() {
                 val task = Task(
                     task.id,
                     binding.titleInput.text.toString(),
-                    DateUtils.concatDateAndTime(dataText, timeText),
+                    DateTimeAdapter.concatDateAndTime(dataText, timeText),
                     binding.contentInput.text.toString(), false
                 )
                 val addTask = Intent().apply {
@@ -85,12 +85,12 @@ class EditActivity : AppCompatActivity() {
             task = Task()
             type = OperationType.ADD
         }
-        dataText = DateUtils.toString(task.date, DateUtils.DATE)
-        timeText = DateUtils.toString(task.date, DateUtils.TIME)
+        dataText = DateTimeAdapter.toString(task.date, DateTimeAdapter.DATE)
+        timeText = DateTimeAdapter.toString(task.date, DateTimeAdapter.TIME)
         binding.apply {
             titleInput.setText(task.name)
-            dateInput.setText(DateUtils.toString(task.date, DateUtils.DATE))
-            timeInput.setText(DateUtils.toString(task.date, DateUtils.TIME))
+            dateInput.setText(DateTimeAdapter.toString(task.date, DateTimeAdapter.DATE))
+            timeInput.setText(DateTimeAdapter.toString(task.date, DateTimeAdapter.TIME))
             contentInput.setText(task.desc)
         }
     }
@@ -109,7 +109,7 @@ class EditActivity : AppCompatActivity() {
                 .build()
 
             datePicker.addOnPositiveButtonClickListener {
-                dataText = DateUtils.toString(Date(it), DateUtils.DATE)
+                dataText = DateTimeAdapter.toString(Date(it), DateTimeAdapter.DATE)
                 dateInput.setText(dataText)
             }
 
