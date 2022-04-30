@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import com.example.myapplication.model.Task
 import com.example.myapplication.adapter.DateTimeAdapter
 
-class DbManager(context: Context) {
+class ToDoManager(context: Context) {
     private val dbHelp: DbHelp = DbHelp(context)
     private var database: SQLiteDatabase? = null
 

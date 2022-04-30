@@ -23,7 +23,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var map: MapView
     private lateinit var binding: FragmentMapBinding
     private lateinit var gMap: GoogleMap
-    private var points = ArrayList<LatLng>()
+    private var pointsList = ArrayList<LatLng>()
     private var polyline: Polyline? = null
 
     override fun onCreateView(
@@ -46,7 +46,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun initListeners() {
         binding.apply {
             clearLineButton.setOnClickListener {
-                points.clear()
+                pointsList.clear()
                 polyline?.remove()
                 gMap.addPolyline(PolylineOptions())
             }
@@ -92,9 +92,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
         googleMap.isMyLocationEnabled = true
         googleMap.setOnMapLongClickListener {
-            points.add(it)
+            pointsList.add(it)
             polyline?.remove()
-            polyline = googleMap.addPolyline(PolylineOptions().addAll(points))
+            polyline = googleMap.addPolyline(PolylineOptions().addAll(pointsList))
             polyline!!.color = ContextCompat.getColor(requireContext(), R.color.color_highlight)
         }
         gMap = googleMap

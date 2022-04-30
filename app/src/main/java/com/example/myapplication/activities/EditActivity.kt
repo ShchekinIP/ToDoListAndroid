@@ -104,7 +104,7 @@ class EditActivity : AppCompatActivity() {
                     .setTitleText("Select date")
                     .build()
             val timePicker = MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setTimeFormat(TimeFormat.CLOCK_12H)
                 .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
                 .build()
 

@@ -19,14 +19,14 @@ import com.example.myapplication.databinding.FragmentNotesListBinding
 import com.example.myapplication.enums.OperationType
 import com.example.myapplication.interfaces.TaskClickListener
 import com.example.myapplication.model.Task
-import com.example.myapplication.sql.DbManager
+import com.example.myapplication.sql.ToDoManager
 import com.example.myapplication.adapter.DateTimeAdapter
 
 class TasksListFragment : Fragment(), TaskClickListener {
     private lateinit var binding: FragmentNotesListBinding
     private lateinit var launcher: ActivityResultLauncher<Intent>
     private lateinit var adapter: TaskAdapter
-    private lateinit var dbManager: DbManager
+    private lateinit var dbManager: ToDoManager
     private var toDeleteList = ArrayList<Int>()
 
     companion object {
@@ -38,7 +38,7 @@ class TasksListFragment : Fragment(), TaskClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        dbManager = DbManager(requireContext())
+        dbManager = ToDoManager(requireContext())
         binding = FragmentNotesListBinding.inflate(inflater)
         initLauncherAndAdapter()
         initRecyclerView()

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.api.AccessService
 import com.example.myapplication.api.AuthService
-import com.example.myapplication.api.retrofit.RestApiClient
+import com.example.myapplication.api.ApiClient
 import com.example.myapplication.api.security.SessionManager
 import com.example.myapplication.databinding.ActivityLoginBinding
 import com.example.myapplication.fragments.apiFragments.LoginFragment
@@ -32,8 +32,8 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        authService = RestApiClient.getAuthService(this)
-        accessService = RestApiClient.getAccessService(this)
+        authService = ApiClient.getAuthService(this)
+        accessService = ApiClient.getAccessService(this)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         sessionManager = SessionManager(this)
         setContentView(binding.root)

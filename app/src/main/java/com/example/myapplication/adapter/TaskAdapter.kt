@@ -9,19 +9,18 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.NoteItemBinding
 import com.example.myapplication.interfaces.TaskClickListener
 import com.example.myapplication.model.Task
-import com.example.myapplication.sql.DbManager
+import com.example.myapplication.sql.ToDoManager
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
 
-class TaskAdapter(private val taskClickListener: TaskClickListener, private var dbManager: DbManager) :
+class TaskAdapter(private val taskClickListener: TaskClickListener, private var dbManager: ToDoManager) :
         RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
         private var taskList = ArrayList<Task>()
 
         class TaskHolder(
             item: View,
             private var taskClickListener: TaskClickListener,
-            private var dbManager: DbManager
+            private var dbManager: ToDoManager
         ) : RecyclerView.ViewHolder(item) {
             private var binding = NoteItemBinding.bind(item)
 

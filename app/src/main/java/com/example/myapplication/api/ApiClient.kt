@@ -1,10 +1,8 @@
-package com.example.myapplication.api.retrofit
+package com.example.myapplication.api
 
 import android.content.Context
-import com.example.myapplication.api.AccessService
-import com.example.myapplication.api.AuthService
 
-object RestApiClient {
+object ApiClient {
     private var BASE_URL = "http://10.0.2.2:8081/api/"
 
     fun getAuthService(context: Context): AuthService {
