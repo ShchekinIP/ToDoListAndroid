@@ -2,7 +2,9 @@ package com.example.myapplication.fragments.mainFragment
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,20 +13,40 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentMapBinding
+import com.google.android.gms.location.*
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
+
 
 class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var map: MapView
     private lateinit var binding: FragmentMapBinding
     private lateinit var gMap: GoogleMap
-    private var pointsList = ArrayList<LatLng>()
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var points = ArrayList<LatLng>()
     private var polyline: Polyline? = null
+    private var isTrackingStep: Boolean = false
+
+    private val locationCallback = object : LocationCallback() {
+        override fun onLocationResult(p0: LocationResult) {
+            val latitude = p0.lastLocation.latitude
+            val longitude = p0.lastLocation.longitude
+            if (points.isEmpty() || latitude != points.last().latitude || longitude != points.last().longitude) {
+                points.add(LatLng(latitude, longitude))
+                addPolyline()
+            }
+        }
+    }
+    private val locationRequest = LocationRequest.create().apply {
+        interval = 10_000
+        fastestInterval = 5_000
+        priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +65,30 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         fun newInstance() = MapFragment()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fusedLocationProviderClient =
+            LocationServices.getFusedLocationProviderClient(requireContext())
+    }
+
     private fun initListeners() {
         binding.apply {
             clearLineButton.setOnClickListener {
-                pointsList.clear()
+                points.clear()
                 polyline?.remove()
                 gMap.addPolyline(PolylineOptions())
+            }
+            gpsTracker.setBackgroundColor(if (isTrackingStep) Color.LTGRAY else  Color.GRAY)
+            gpsTracker.setOnClickListener {
+                isTrackingStep = !isTrackingStep
+                gpsTracker.setBackgroundColor(if (isTrackingStep) Color.LTGRAY else  Color.GRAY)
+                if (isTrackingStep) {
+                    checkPermission()
+                    points.clear()
+                    setLocationListener()
+                } else {
+                    fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+                }
             }
         }
     }
@@ -76,6 +116,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onDestroy() {
         super.onDestroy()
         map.onDestroy()
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
     }
 
     override fun onLowMemory() {
@@ -83,20 +124,54 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         map.onLowMemory()
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        if (ActivityCompat.checkSelfPermission(requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(),
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+    private fun checkPermission() {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1
+            )
             return
         }
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        checkPermission()
         googleMap.isMyLocationEnabled = true
-        googleMap.setOnMapLongClickListener {
-            pointsList.add(it)
-            polyline?.remove()
-            polyline = googleMap.addPolyline(PolylineOptions().addAll(pointsList))
-            polyline!!.color = ContextCompat.getColor(requireContext(), R.color.color_highlight)
+        fusedLocationProviderClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
+            task.result?.let {
+                googleMap.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        LatLng(it.latitude, it.longitude), 15F
+                    )
+                )
+            }
         }
         gMap = googleMap
+        gMap.setOnMapLongClickListener {
+            points.add(it)
+            addPolyline()
+        }
+        if (isTrackingStep) {
+            setLocationListener()
+        }
+    }
+
+    private fun setLocationListener() {
+        checkPermission()
+        fusedLocationProviderClient.requestLocationUpdates(
+            locationRequest,
+            locationCallback,
+            Looper.getMainLooper()
+        )
+    }
+
+    private fun addPolyline() {
+        polyline?.remove()
+        polyline = gMap.addPolyline(PolylineOptions().addAll(points))
+        polyline!!.color = ContextCompat.getColor(requireContext(), R.color.color_highlight)
     }
 }
